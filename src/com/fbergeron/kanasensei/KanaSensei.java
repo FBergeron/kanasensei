@@ -36,22 +36,22 @@ import com.fbergeron.util.*;
 public class KanaSensei extends Frame
 {
 
-	/**
-	 * Constructs a KanaSensei frame.
-	 *
-	 * @param applet Applet from which the frame is invoked.
-	 * @param title Title of the KanaSensei frame.
-	 * @param locale Locale used for KanaSensei.
-	 */
-	public KanaSensei( java.applet.Applet applet )
-	{
-		super();
-		this.applet = applet;
+    /**
+     * Constructs a KanaSensei frame.
+     *
+     * @param applet Applet from which the frame is invoked.
+     * @param title Title of the KanaSensei frame.
+     * @param locale Locale used for KanaSensei.
+     */
+    public KanaSensei( java.applet.Applet applet )
+    {
+        super();
+        this.applet = applet;
 
         isAllKanas = true;
-		isLoopTest = false;
-		testType = KATAKANA_ROMAJI;
-		hasSound = true;
+        isLoopTest = false;
+        testType = KATAKANA_ROMAJI;
+        hasSound = true;
 
         kanaSetA = new Toggle( true );
         kanaSetK = new Toggle( false );
@@ -69,8 +69,8 @@ public class KanaSensei extends Frame
         kanaSetB = new Toggle( false );
         kanaSetP = new Toggle( false );
 
-		buildGUI();
-		newTest();
+        buildGUI();
+        newTest();
     }
 
     /**
@@ -79,13 +79,13 @@ public class KanaSensei extends Frame
      * @see java.awt.Component#isVisible
      */
     public void setVisible(boolean b)
-	{
-	    Dimension scrSize = getToolkit().getScreenSize();
-	    Dimension size = getSize();
-		if(b)
-			setLocation( (scrSize.width - size.width) / 2, (scrSize.height - size.height) / 2 );
-		super.setVisible(b);
-	}
+    {
+        Dimension scrSize = getToolkit().getScreenSize();
+        Dimension size = getSize();
+        if(b)
+            setLocation( (scrSize.width - size.width) / 2, (scrSize.height - size.height) / 2 );
+        super.setVisible(b);
+    }
 
     /**
      * Sets the locale.
@@ -94,29 +94,29 @@ public class KanaSensei extends Frame
     public void setLocale( Locale locale ) {
         super.setLocale( locale );
         
-		resBundle = ResourceBundle.getBundle( KanaSensei.class.getName() + "Ress", locale );
+        resBundle = ResourceBundle.getBundle( KanaSensei.class.getName() + "Ress", locale );
 
         menuOptions.setLabel( resBundle.getString( "Options" ) );
-		menuItemLoopTest.setLabel( resBundle.getString( "LoopTest" ) );
-		menuItemAllKanas.setLabel( resBundle.getString( "AllKanas" ) );
-		menuItemNewTest.setLabel( resBundle.getString( "NewTest" ) );
-		menuItemHasSound.setLabel( resBundle.getString( "HasSound" ) );
-		menuViews.setLabel( resBundle.getString( "Views" ) );
-		menuItemRomaKata.setLabel( resBundle.getString( "RomaAndKata" ) );
-		menuItemRomaHira.setLabel( resBundle.getString( "RomaAndHira" ) );
-		menuItemHira.setLabel( resBundle.getString( "HiraAndRoma" ) );
-		menuItemKata.setLabel( resBundle.getString( "KataAndRoma" ) );
+        menuItemLoopTest.setLabel( resBundle.getString( "LoopTest" ) );
+        menuItemAllKanas.setLabel( resBundle.getString( "AllKanas" ) );
+        menuItemNewTest.setLabel( resBundle.getString( "NewTest" ) );
+        menuItemHasSound.setLabel( resBundle.getString( "HasSound" ) );
+        menuViews.setLabel( resBundle.getString( "Views" ) );
+        menuItemRomaKata.setLabel( resBundle.getString( "RomaAndKata" ) );
+        menuItemRomaHira.setLabel( resBundle.getString( "RomaAndHira" ) );
+        menuItemHira.setLabel( resBundle.getString( "HiraAndRoma" ) );
+        menuItemKata.setLabel( resBundle.getString( "KataAndRoma" ) );
         menuLanguage.setLabel( resBundle.getString( "Language" ) );
         menuItemEnglish.setLabel( resBundle.getString( "English" ) );
         menuItemFrench.setLabel( resBundle.getString( "French" ) );
         menuItemSpanish.setLabel( resBundle.getString( "Spanish" ) );
         menuItemGerman.setLabel( resBundle.getString( "German" ) );
         menuItemItalian.setLabel( resBundle.getString( "Italian" ) );
-		menuHelp.setLabel( resBundle.getString( "Help" ) );
-		menuItemHelp.setLabel( resBundle.getString( "Directions" ) );
-		menuItemAbout.setLabel( resBundle.getString( "About" ) );
+        menuHelp.setLabel( resBundle.getString( "Help" ) );
+        menuItemHelp.setLabel( resBundle.getString( "Directions" ) );
+        menuItemAbout.setLabel( resBundle.getString( "About" ) );
         menuItemLicense.setLabel( resBundle.getString( "License" ) );
-	    setTitle( resBundle.getString( "KanaSensei" ) );
+        setTitle( resBundle.getString( "KanaSensei" ) );
         scoreBoard.setLocale( locale );
         feedback.setLocale( locale );
 
@@ -149,10 +149,10 @@ public class KanaSensei extends Frame
         ask();
     }
 
-	/**
-	 * Asks a new kana.
-	 */
-	protected void askAnotherKana() {
+    /**
+     * Asks a new kana.
+     */
+    protected void askAnotherKana() {
         if( !isLoopTest )
             kanaPool.removeElement( currKana );
         if( !isLoopTest && kanaPool.isEmpty() )
@@ -250,21 +250,21 @@ public class KanaSensei extends Frame
     }
 
     private void buildGUI() {
-		setBackground( Color.gray );
-		setLayout( new BorderLayout() );
+        setBackground( Color.gray );
+        setLayout( new BorderLayout() );
 
-		panelOutput = new Panel( new GridLayout( 1, 2 ) );
+        panelOutput = new Panel( new GridLayout( 1, 2 ) );
 
-		screen = new Screen();
-		screen.setBackground( Color.white );
-		scoreBoard = new ScoreBoard();
-		scoreBoard.setBackground( new Color( 205, 205, 154 ) );
-		scoreBoard.setFont( new Font( "Arial", Font.BOLD, 24 ) );
+        screen = new Screen();
+        screen.setBackground( Color.white );
+        scoreBoard = new ScoreBoard();
+        scoreBoard.setBackground( new Color( 205, 205, 154 ) );
+        scoreBoard.setFont( new Font( "Arial", Font.BOLD, 24 ) );
 
-		panelOutput.add( screen );
-		panelOutput.add( scoreBoard );
+        panelOutput.add( screen );
+        panelOutput.add( scoreBoard );
 
-		panelConsole = new Panel( new GridLayout( 2, 1 ) );
+        panelConsole = new Panel( new GridLayout( 2, 1 ) );
         keyboard = new Keyboard();
         keyboard.setBackground( new Color( 100, 100, 255 ) );
         panelConsole.add( panelOutput );
@@ -304,40 +304,40 @@ public class KanaSensei extends Frame
             Locale locale;;
         }
 
-		//Menus
-		menubar = new MenuBar();
-		setMenuBar( menubar );
+        //Menus
+        menubar = new MenuBar();
+        setMenuBar( menubar );
 
-		//Menu Options
-		menuOptions = new Menu();
-		menubar.add( menuOptions );
+        //Menu Options
+        menuOptions = new Menu();
+        menubar.add( menuOptions );
 
-		menuItemLoopTest = new CheckboxMenuItem( "LoopTest" );
-		menuItemLoopTest.addItemListener( new ItemListener() {
+        menuItemLoopTest = new CheckboxMenuItem( "LoopTest" );
+        menuItemLoopTest.addItemListener( new ItemListener() {
             public void itemStateChanged( ItemEvent e ) {
                 isLoopTest = !isLoopTest;
                 updateMenus();
                 newTest();
             }
-		});
+        });
 
-		menuItemAllKanas = new CheckboxMenuItem( "AllKanas" );
-		menuItemAllKanas.addItemListener( new ItemListener() {
+        menuItemAllKanas = new CheckboxMenuItem( "AllKanas" );
+        menuItemAllKanas.addItemListener( new ItemListener() {
             public void itemStateChanged( ItemEvent e ) {
                 isAllKanas = !isAllKanas;
                 newTest();
             }
-		});
+        });
 
-		menuItemNewTest = new MenuItem();
-		menuItemNewTest.addActionListener( new NewTestListener() );
+        menuItemNewTest = new MenuItem();
+        menuItemNewTest.addActionListener( new NewTestListener() );
 
-		menuItemHasSound = new CheckboxMenuItem( "HasSound", hasSound );
-		menuItemHasSound.addItemListener( new ItemListener() {
-		    public void itemStateChanged( ItemEvent e ) {
-		        hasSound = !hasSound;
-		    }
-		} );
+        menuItemHasSound = new CheckboxMenuItem( "HasSound", hasSound );
+        menuItemHasSound.addItemListener( new ItemListener() {
+            public void itemStateChanged( ItemEvent e ) {
+                hasSound = !hasSound;
+            }
+        } );
 
         menuItemEnglish = new CheckboxMenuItem( "English" );
         menuItemEnglish.addItemListener( new LocaleListener( Locale.ENGLISH ) );
@@ -357,53 +357,53 @@ public class KanaSensei extends Frame
         menuLanguage.add( menuItemGerman );
         menuLanguage.add( menuItemItalian );
 
-		menuOptions.add( menuItemNewTest );
-		menuOptions.add( new MenuItem( "-" ) );
-		menuOptions.add( menuItemAllKanas );
-		menuOptions.add( new MenuItem( "-" ) );
-		menuOptions.add( menuItemLoopTest );
-		menuOptions.add( new MenuItem( "-" ) );
-		menuOptions.add( menuItemHasSound );
+        menuOptions.add( menuItemNewTest );
+        menuOptions.add( new MenuItem( "-" ) );
+        menuOptions.add( menuItemAllKanas );
+        menuOptions.add( new MenuItem( "-" ) );
+        menuOptions.add( menuItemLoopTest );
+        menuOptions.add( new MenuItem( "-" ) );
+        menuOptions.add( menuItemHasSound );
         menuOptions.add( menuLanguage );
 
         //Menu Views
-		menuViews = new Menu();
-		menubar.add( menuViews );
+        menuViews = new Menu();
+        menubar.add( menuViews );
 
-		menuItemRomaKata = new CheckboxMenuItem( "RomaAndKata" );
-		menuItemRomaKata.addItemListener( new TestTypeListener( ROMAJI_KATAKANA ) );
-		menuItemRomaHira = new CheckboxMenuItem( "RomaAndHira" );
-		menuItemRomaHira.addItemListener( new TestTypeListener( ROMAJI_HIRAGANA ) );
-		menuItemHira = new CheckboxMenuItem( "HiraAndRoma" );
-		menuItemHira.addItemListener( new TestTypeListener( HIRAGANA_ROMAJI ) );
-		menuItemKata = new CheckboxMenuItem( "KataAndRoma" );
-		menuItemKata.addItemListener( new TestTypeListener( KATAKANA_ROMAJI ) );
+        menuItemRomaKata = new CheckboxMenuItem( "RomaAndKata" );
+        menuItemRomaKata.addItemListener( new TestTypeListener( ROMAJI_KATAKANA ) );
+        menuItemRomaHira = new CheckboxMenuItem( "RomaAndHira" );
+        menuItemRomaHira.addItemListener( new TestTypeListener( ROMAJI_HIRAGANA ) );
+        menuItemHira = new CheckboxMenuItem( "HiraAndRoma" );
+        menuItemHira.addItemListener( new TestTypeListener( HIRAGANA_ROMAJI ) );
+        menuItemKata = new CheckboxMenuItem( "KataAndRoma" );
+        menuItemKata.addItemListener( new TestTypeListener( KATAKANA_ROMAJI ) );
 
-		menuViews.add( menuItemKata );
-		menuViews.add( menuItemHira );
-		menuViews.add( menuItemRomaKata );
-		menuViews.add( menuItemRomaHira );
+        menuViews.add( menuItemKata );
+        menuViews.add( menuItemHira );
+        menuViews.add( menuItemRomaKata );
+        menuViews.add( menuItemRomaHira );
 
-		//Menu Help
-		menuHelp = new Menu();
-		menubar.add( menuHelp );
-		menuItemHelp = new MenuItem();
-		menuItemHelp.addActionListener( new HelpListener() );
-		menuItemAbout = new MenuItem();
-		menuItemAbout.addActionListener( new AboutListener() );
+        //Menu Help
+        menuHelp = new Menu();
+        menubar.add( menuHelp );
+        menuItemHelp = new MenuItem();
+        menuItemHelp.addActionListener( new HelpListener() );
+        menuItemAbout = new MenuItem();
+        menuItemAbout.addActionListener( new AboutListener() );
         menuItemLicense = new MenuItem();
         menuItemLicense.addActionListener( new LicenseListener() );
-		menuHelp.add( menuItemHelp );
-		menuHelp.add( new MenuItem( "-" ) );
-		menuHelp.add( menuItemAbout );
+        menuHelp.add( menuItemHelp );
+        menuHelp.add( new MenuItem( "-" ) );
+        menuHelp.add( menuItemAbout );
         menuHelp.add( menuItemLicense );
 
-		addWindowListener( new WindowManager( this, 
+        addWindowListener( new WindowManager( this, 
             applet == null ? WindowManager.EXIT_ON_CLOSE : WindowManager.DISPOSE_ON_CLOSE ) );
 
-		setSize( 800, 600 );
+        setSize( 800, 600 );
         update();
-	    setVisible( true );
+        setVisible( true );
     }
 
     private void ask() {
@@ -423,42 +423,42 @@ public class KanaSensei extends Frame
         }
     }
 
-	private void rightAnswer() {
-	    if( applet != null && hasSound )
-	        applet.play( applet.getCodeBase(), "com/fbergeron/kanasensei/right.au" );
-	    if( attempts == 0 )
+    private void rightAnswer() {
+        if( applet != null && hasSound )
+            applet.play( applet.getCodeBase(), "com/fbergeron/kanasensei/right.au" );
+        if( attempts == 0 )
             rightAnswers++;
         scoreBoard.repaint();
         askAnotherKana();
-	}
+    }
 
-	private void wrongAnswer() {
+    private void wrongAnswer() {
         state = WRONG_KANA;
-	    if( applet != null && hasSound )
-	        applet.play( applet.getCodeBase(), "com/fbergeron/kanasensei/wrong.au" );
+        if( applet != null && hasSound )
+            applet.play( applet.getCodeBase(), "com/fbergeron/kanasensei/wrong.au" );
         feedback.update();
-	    attempts++;
+        attempts++;
         if( attempts < MAX_ATTEMPTS ) {
             wrongAnswers++;
             scoreBoard.repaint();
         }
-	    if( attempts == MAX_ATTEMPTS )
-	        showRightAnswer();
-	}
+        if( attempts == MAX_ATTEMPTS )
+            showRightAnswer();
+    }
 
-	private void showRightAnswer() {
+    private void showRightAnswer() {
         state = KanaSensei.RIGHT_KANA;
         feedback.update();
         keyboard.hightlightKana( currKana );
     }
 
-	private void conclude() {
+    private void conclude() {
         String title = resBundle.getString( "Message" );
         String msg = resBundle.getString( "TestConcluded" );
         DialogMsg d = new DialogMsg( this, title, true, msg );
         d.setVisible( true );
         newTest();
-	}
+    }
 
     private void updateMenus() {
         menuItemRomaKata.setState( testType == ROMAJI_KATAKANA );
@@ -472,8 +472,13 @@ public class KanaSensei extends Frame
 
     class AboutListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            FrameAbout frameAbout = new FrameAbout();
-            frameAbout.setLocale( KanaSensei.this.getLocale() );
+            if( frameAbout == null ) {
+                frameAbout = new FrameAbout();
+                frameAbout.setLocale( KanaSensei.this.getLocale() );
+                Dimension scrSize = getToolkit().getScreenSize();
+                Dimension frameSize = frameAbout.getSize();
+                frameAbout.setLocation( (scrSize.width - frameSize.width) / 2, (scrSize.height - frameSize.height) / 2 );
+            }
             frameAbout.setVisible( true );
         }
     }
@@ -491,29 +496,30 @@ public class KanaSensei extends Frame
         }
     }
 
-	class NewTestListener implements ActionListener {
+    class NewTestListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             newTest();
         }
     }
 
-	class HelpListener implements ActionListener {
+    class HelpListener implements ActionListener {
         public void actionPerformed( ActionEvent e ) {
-            String title = resBundle.getString( "Help" );
-            String msg = resBundle.getString( "HelpText" );
-            DialogMsg helpWindow = new DialogMsg( KanaSensei.this, title, true, msg );
-            helpWindow.setLocation( 10, 10 );
-            helpWindow.setSize( 400, 500 );
-            helpWindow.setFont( new Font( "Arial", Font.PLAIN, 14 ) );
-            helpWindow.setResizable( true );
+            if( helpWindow == null ) {
+                helpWindow = new HelpWindow( KanaSensei.this );
+                helpWindow.setLocale( KanaSensei.this.getLocale() );
+                helpWindow.setLocation( 10, 10 );
+                helpWindow.setSize( 400, 500 );
+                helpWindow.setFont( new Font( "Arial", Font.PLAIN, 14 ) );
+                helpWindow.setResizable( true );
+            }
             helpWindow.setVisible( true );
         }
     }
 
-	class KanaListener extends MouseAdapter {
-	    public KanaListener( KanaButton kanaButton ) {
-	        this.kanaButton = kanaButton;
-	    }
+    class KanaListener extends MouseAdapter {
+        public KanaListener( KanaButton kanaButton ) {
+            this.kanaButton = kanaButton;
+        }
 
         public void mousePressed( MouseEvent e ) {
             if( kanaButton.isHighlighted() ) {
@@ -526,6 +532,19 @@ public class KanaSensei extends Frame
 
         private KanaButton kanaButton;
     }
+
+    class HelpWindow extends DialogMsg {
+        HelpWindow( Frame parent ) {
+            super( parent, null, false, null );
+        }
+        
+        public void setLocale( Locale locale ) {
+            super.setLocale( locale );
+            this.setTitle( resBundle.getString( "Help" ) );
+            setMessage( resBundle.getString( "HelpText" ) );
+        }
+    }
+
 
     /**
      * Panel on which results of the test are displayed.
@@ -565,6 +584,10 @@ public class KanaSensei extends Frame
             labelRightAnswers.setText( resBundle.getString( "Rights" ) );
             labelWrongAnswers.setText( resBundle.getString( "Wrongs" ) );
             labelTotal.setText( resBundle.getString( "Total" ) );
+            if( frameAbout != null )
+                frameAbout.setLocale( locale );
+            if( helpWindow != null )
+                helpWindow.setLocale( locale );
         }
 
         public Insets getInsets() {
@@ -1003,16 +1026,16 @@ public class KanaSensei extends Frame
         void update() {
             switch( KanaSensei.this.state ) {
                 case ASKING_KANA :
-    	            this.setForeground( Color.black );
+                    this.setForeground( Color.black );
                     this.setText( resBundle.getString( "ClickSymbol" ) );
                     break;
                 case RIGHT_KANA :
-	                this.setForeground( Color.red );
-	                this.setText( resBundle.getString( "ShowAnswer" ) );
+                    this.setForeground( Color.red );
+                    this.setText( resBundle.getString( "ShowAnswer" ) );
                     break;
                 case WRONG_KANA :
-	                this.setForeground( Color.red );
-	                this.setText( resBundle.getString( "WrongAnswer" ) );
+                    this.setForeground( Color.red );
+                    this.setText( resBundle.getString( "WrongAnswer" ) );
                     break;
             }
         }
@@ -1100,7 +1123,10 @@ public class KanaSensei extends Frame
 
     protected Kana currKana;
 
-    private Applet           applet;
+    private Applet  applet;
+
+    private FrameAbout  frameAbout;
+    private HelpWindow  helpWindow;
 
     private static final int        MAX_ATTEMPTS        = 2;
 
