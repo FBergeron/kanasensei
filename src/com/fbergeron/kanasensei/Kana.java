@@ -65,8 +65,8 @@ public class Kana {
      */
     private Kana( String romaji, String kataFilename, String hiraFilename ) {
         this.romaji = romaji;
-        this.katakana = Util.getImageResourceFile( kataFilename + ".gif", Kana.class );
-        this.hiragana = Util.getImageResourceFile( hiraFilename + ".gif", Kana.class );
+        this.katakana = Util.getImageResourceFile( kataFilename + ".png", Kana.class );
+        this.hiragana = Util.getImageResourceFile( hiraFilename + ".png", Kana.class );
         if( tracker != null ) {
             tracker.addImage( this.katakana, 0 );
             tracker.addImage( this.hiragana, 0 );
