@@ -29,32 +29,21 @@ import com.fbergeron.kanasensei.*;
 public class Invoker extends java.applet.Applet {
 
 	/**
-	 * Initializes the applet.
+	 * Constructs and shows the KanaSensei frame in the specified language.
 	 */
-	public void init() {
-	    String localeParameter = getParameter( "Locale" );
-	    if( localeParameter.equals( "fr" ) )
+	public void showKanaSensei( String language ) {
+        Locale locale = null;
+	    if( "fr".equals( language ) )
 	        locale = Locale.FRENCH;
-	    else if( localeParameter.equals( "es" ) )
+	    else if( "es".equals( language )  )
 	        locale = new Locale( "es", "" );
-	    else if( localeParameter.equals( "de" ) )
+	    else if( "de".equals( language ) )
 	        locale = Locale.GERMAN;
-	    else if( localeParameter.equals( "it" ) )
+	    else if( "it".equals( language ) )
 	        locale = Locale.ITALIAN;
 	    else
 	        locale = Locale.ENGLISH;
-		setSize(0,0);
-		showKanaSensei();
-    }
-
-	/**
-	 * Constructs and shows the KanaSensei frame.
-	 */
-	public void showKanaSensei() {
-		kanaSensei = new KanaSensei( this, "Sensei", locale );
+		KanaSensei kanaSensei = new KanaSensei( this, "Sensei", locale );
 	}
-	
-	private Locale          locale;
-	private KanaSensei      kanaSensei;
-	private ResourceBundle  resBundle;
+        
 }
