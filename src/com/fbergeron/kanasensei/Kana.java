@@ -29,9 +29,10 @@ import com.fbergeron.util.*;
  */
 public class Kana {
 
-    public String romaji;
-    public Image katakana;
-    public Image hiragana;
+    public String   romaji;
+    public Image    katakana;
+    public Image    hiragana;
+    public boolean  isSelected;
 
     /**
      * Accessor for a Kana.
