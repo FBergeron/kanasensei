@@ -31,19 +31,10 @@ public class Invoker extends java.applet.Applet {
 	/**
 	 * Constructs and shows the KanaSensei frame in the specified language.
 	 */
-	public void showKanaSensei( String language ) {
-        Locale locale = null;
-	    if( "fr".equals( language ) )
-	        locale = Locale.FRENCH;
-	    else if( "es".equals( language )  )
-	        locale = new Locale( "es", "" );
-	    else if( "de".equals( language ) )
-	        locale = Locale.GERMAN;
-	    else if( "it".equals( language ) )
-	        locale = Locale.ITALIAN;
-	    else
-	        locale = Locale.ENGLISH;
-		KanaSensei kanaSensei = new KanaSensei( this, "Sensei", locale );
+	public void init() {
+		KanaSensei kanaSensei = new KanaSensei( this );
+        kanaSensei.setLocale( Locale.ENGLISH );
+        kanaSensei.setVisible( true );
 	}
         
 }
