@@ -30,7 +30,7 @@ public class Toggle {
      * @param isOn Initial value of the toggle.
      */
     public Toggle( boolean isOn ) {
-        value = isOn;
+        _value = isOn;
     }
 
     /**
@@ -38,7 +38,7 @@ public class Toggle {
      */
         
     public void toggle() {
-        value = !value;
+        _value = !_value;
     }
 
     /**
@@ -48,7 +48,7 @@ public class Toggle {
      */
         
     public boolean isOn() {
-        return( value );
+        return( _value );
     }
 
     /**
@@ -58,8 +58,8 @@ public class Toggle {
      */
         
     public String toString() {
-        return( value + "" );
+        return( _value + "" );
     }
         
-    private boolean value;
+    private boolean _value;
 }
