@@ -33,6 +33,7 @@ public class FrameAbout extends Frame
 	public FrameAbout()
 	{
         setLayout( new BorderLayout() );
+        setBackground( Color.white );
         
         Image imgLogo = Util.getImageResourceFile( "logo.jpg", getClass() );
         Util.loadImages( new Image[] { imgLogo }, this );
