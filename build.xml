@@ -1,6 +1,7 @@
 <project name="kanasensei" default="dist" basedir=".">
 
   <property name="src" value="src"/>
+  <property name="lib" value="lib"/>
   <property name="properties" value="properties"/>
   <property name="javadoc" value="doc/javadoc"/>
   <property name="classes" value="classes"/>
@@ -12,7 +13,7 @@
 
   <path id="project.class.path">
   	<pathelement path="${classpath}"/>
-      <fileset dir="lib">
+      <fileset dir="${lib}">
         <include name="**/*.jar"/>
       </fileset>
       <pathelement location="${classes}"/>
@@ -32,20 +33,26 @@
   </target>
 
   <target name="dist" depends="compile">
-    <mkdir dir="${dist}"/>
-    <mkdir dir="${dist.html}"/>
     <mkdir dir="${dist.ftp}"/>
-  	<jar jarfile="${dist.html}/img.jar" basedir="img"/>
-  	<jar jarfile="${dist.html}/snd.jar" basedir="snd"/>
-  	<jar jarfile="${dist.html}/classes.jar" basedir="classes"/>
-  	<jar jarfile="${dist.html}/properties.jar" basedir="properties"/>
-  	<jar jarfile="${dist.html}/doc.jar" basedir="doc"/>
-  	<jar jarfile="${dist.html}/src.jar" basedir="src" includes="**/*.java"/>
+  	<jar jarfile="${dist.html}/res/img.jar" basedir="img"/>
+  	<jar jarfile="${dist.html}/res/snd.jar" basedir="snd"/>
+  	<jar jarfile="${dist.html}/res/classes.jar" basedir="classes"/>
+  	<jar jarfile="${dist.html}/res/properties.jar" basedir="properties"/>
+    <copy todir="${dist.html}/res">
+      <fileset dir="${lib}">
+        <include name="**/*.jar"/>
+      </fileset>
+    </copy>  
   </target>
 
   <target name="clean">
     <delete dir="${classes}"/>
-    <delete dir="${dist}"/>
+    <delete>
+      <fileset dir="${dist.html}/res">
+        <include name="**/*.jar"/>
+      </fileset>
+    </delete>  
+    <delete dir="${dist.ftp}"/>
   </target>
 </project>
 
