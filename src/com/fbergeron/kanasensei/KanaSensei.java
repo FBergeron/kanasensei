@@ -115,6 +115,7 @@ public class KanaSensei extends Frame
 		menuHelp.setLabel( resBundle.getString( "Help" ) );
 		menuItemHelp.setLabel( resBundle.getString( "Directions" ) );
 		menuItemAbout.setLabel( resBundle.getString( "About" ) );
+        menuItemLicense.setLabel( resBundle.getString( "License" ) );
 	    setTitle( resBundle.getString( "KanaSensei" ) );
         scoreBoard.setLocale( locale );
         feedback.setLocale( locale );
@@ -384,11 +385,15 @@ public class KanaSensei extends Frame
 		menuItemHelp.addActionListener( new HelpListener() );
 		menuItemAbout = new MenuItem();
 		menuItemAbout.addActionListener( new AboutListener() );
+        menuItemLicense = new MenuItem();
+        menuItemLicense.addActionListener( new LicenseListener() );
 		menuHelp.add( menuItemHelp );
 		menuHelp.add( new MenuItem( "-" ) );
 		menuHelp.add( menuItemAbout );
+        menuHelp.add( menuItemLicense );
 
-		addWindowListener( new WindowManager( this, WindowManager.HIDE_ON_CLOSE ) );
+		addWindowListener( new WindowManager( this, 
+            applet == null ? WindowManager.EXIT_ON_CLOSE : WindowManager.DISPOSE_ON_CLOSE ) );
 
 		setSize( 800, 600 );
         update();
@@ -469,6 +474,19 @@ public class KanaSensei extends Frame
                 "Frédéric Bergeron", "FBergeron@users.sourceforge.net",
                     df.format( cal.getTime() ), locale );
             frameAbout.setVisible( true );
+        }
+    }
+
+    class LicenseListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String title = resBundle.getString( "License" );
+            String msg = resBundle.getString( "LicenseText" );
+            DialogMsg licenseWindow = new DialogMsg( KanaSensei.this, title, true, msg );
+            licenseWindow.setLocation( 20, 20 );
+            licenseWindow.setSize( 500, 300 );
+            licenseWindow.setFont( new Font( "Arial", Font.PLAIN, 14 ) );
+            licenseWindow.setResizable( true );
+            licenseWindow.setVisible( true );
         }
     }
 
@@ -1032,6 +1050,7 @@ public class KanaSensei extends Frame
 
     private MenuItem            menuItemHelp;
     private MenuItem            menuItemAbout;
+    private MenuItem            menuItemLicense;
 
     private Keyboard            keyboard;
     private Panel               panelOutput;
