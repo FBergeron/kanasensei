@@ -23,42 +23,20 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 
+import com.sixlegs.image.png.PngImage;
+
 public class Util {
     public static Image getImageResourceFile( String strResourceFilename, Class srcClass ) {
-        Image m_image = null;
-        try {
-            BufferedInputStream in = new BufferedInputStream(
-            	srcClass.getResourceAsStream( strResourceFilename ) );
-            if( in == null ) {
-                System.err.println( "Image not found:" + strResourceFilename );
-                return null;
-            }
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            copy( in, out );
-        	m_image = Toolkit.getDefaultToolkit().createImage( out.toByteArray() );
+        PngImage pngImage = null;
+        Image image = null;
+        BufferedInputStream in = new BufferedInputStream(
+            srcClass.getResourceAsStream( strResourceFilename ) );
+        if( in == null ) {
+            System.err.println( "Image not found:" + strResourceFilename );
+            return null;
         }
-        catch( java.io.IOException e ) {
-            System.err.println( "Unable to read image." );
-            e.printStackTrace();
-        }
-	    return( m_image );
+        pngImage = new PngImage( in );
+        image = Toolkit.getDefaultToolkit().createImage( pngImage );
+	    return( image );
 	}
-
-    public static void copy( InputStream in, OutputStream out ) throws IOException
-    {
-        // do not allow other threads to read from the
-        // input or write to the output while copying is
-        // taking place
-        synchronized( in ) {
-            synchronized( out ) {
-                byte[] buffer = new byte[ 1024 ];
-                while( true ) {
-                    int bytesRead = in.read( buffer );
-                    if( bytesRead == -1 )
-                    	break;
-                    out.write( buffer, 0, bytesRead );
-                }
-            }
-        }
-    }
 }
