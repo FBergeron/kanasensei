@@ -1,0 +1,50 @@
+<project name="kanasensei" default="dist" basedir=".">
+
+  <property name="src" value="src"/>
+  <property name="props" value="properties"/>
+  <property name="javadoc" value="doc/javadoc"/>
+  <property name="classes" value="classes"/>
+  <property name="dist" value="dist"/>
+  <property name="dist.html" value="${dist}/public_html"/>
+  <property name="dist.ftp" value="${dist}/public_ftp"/>
+  <property name="build.compiler" value="jikes"/>
+
+  <path id="project.class.path">
+  	<pathelement path="${classpath}"/>
+      <fileset dir="lib">
+        <include name="**/*.jar"/>
+      </fileset>
+      <pathelement location="${classes}"/>
+  </path>
+
+  <target name="compile">
+    <mkdir dir="${classes}"/>
+    <javac srcdir="${src}" destdir="${classes}">
+      <classpath refid="project.class.path"/>
+    </javac>
+  </target>
+
+  <target name="javadoc" depends="compile">
+    <javadoc sourcepath="${src}" destdir="${javadoc}" packagenames="com.*" author="true" version="true" use="true" package="true" windowtitle="KanaSensei API" doctitle="KanaSensei">
+      <classpath refid="project.class.path"/>
+    </javadoc>
+  </target>
+
+  <target name="dist" depends="compile">
+    <mkdir dir="${dist}"/>
+    <mkdir dir="${dist.html}"/>
+    <mkdir dir="${dist.ftp}"/>
+  	<jar jarfile="${dist.html}/img.jar" basedir="img"/>
+  	<jar jarfile="${dist.html}/snd.jar" basedir="snd"/>
+  	<jar jarfile="${dist.html}/classes.jar" basedir="classes"/>
+  	<jar jarfile="${dist.html}/properties.jar" basedir="properties"/>
+  	<jar jarfile="${dist.html}/doc.jar" basedir="doc"/>
+  	<jar jarfile="${dist.html}/src.jar" basedir="src" includes="**/*.java"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="${classes}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>
+
