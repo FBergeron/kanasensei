@@ -119,6 +119,12 @@ public class KanaSensei extends Frame
 	    setTitle( resBundle.getString( "KanaSensei" ) );
         scoreBoard.setLocale( locale );
         feedback.setLocale( locale );
+
+        menuItemEnglish.setState( Locale.ENGLISH.equals( locale ) );
+        menuItemFrench.setState( Locale.FRENCH.equals( locale ) );
+        menuItemSpanish.setState( LOCALE_SPANISH.equals( locale ) );
+        menuItemGerman.setState( Locale.GERMAN.equals( locale ) );
+        menuItemItalian.setState( Locale.ITALIAN.equals( locale ) );
     }
     
     /**
@@ -306,7 +312,7 @@ public class KanaSensei extends Frame
 		menuOptions = new Menu();
 		menubar.add( menuOptions );
 
-		menuItemLoopTest = new CheckboxMenuItem();
+		menuItemLoopTest = new CheckboxMenuItem( "LoopTest" );
 		menuItemLoopTest.addItemListener( new ItemListener() {
             public void itemStateChanged( ItemEvent e ) {
                 isLoopTest = !isLoopTest;
@@ -315,7 +321,7 @@ public class KanaSensei extends Frame
             }
 		});
 
-		menuItemAllKanas = new CheckboxMenuItem();
+		menuItemAllKanas = new CheckboxMenuItem( "AllKanas" );
 		menuItemAllKanas.addItemListener( new ItemListener() {
             public void itemStateChanged( ItemEvent e ) {
                 isAllKanas = !isAllKanas;
@@ -326,22 +332,22 @@ public class KanaSensei extends Frame
 		menuItemNewTest = new MenuItem();
 		menuItemNewTest.addActionListener( new NewTestListener() );
 
-		menuItemHasSound = new CheckboxMenuItem( null, hasSound );
+		menuItemHasSound = new CheckboxMenuItem( "HasSound", hasSound );
 		menuItemHasSound.addItemListener( new ItemListener() {
 		    public void itemStateChanged( ItemEvent e ) {
 		        hasSound = !hasSound;
 		    }
 		} );
 
-        menuItemEnglish = new CheckboxMenuItem();
+        menuItemEnglish = new CheckboxMenuItem( "English" );
         menuItemEnglish.addItemListener( new LocaleListener( Locale.ENGLISH ) );
-        menuItemFrench = new CheckboxMenuItem();
+        menuItemFrench = new CheckboxMenuItem( "French" );
         menuItemFrench.addItemListener( new LocaleListener( Locale.FRENCH ) );
-        menuItemSpanish= new CheckboxMenuItem();
-        menuItemSpanish.addItemListener( new LocaleListener( new Locale( "es", "" ) ) );
-        menuItemGerman = new CheckboxMenuItem();
+        menuItemSpanish= new CheckboxMenuItem( "Spanish" );
+        menuItemSpanish.addItemListener( new LocaleListener( LOCALE_SPANISH ) );
+        menuItemGerman = new CheckboxMenuItem( "German" );
         menuItemGerman.addItemListener( new LocaleListener( Locale.GERMAN ) );
-        menuItemItalian = new CheckboxMenuItem();
+        menuItemItalian = new CheckboxMenuItem( "Italian" );
         menuItemItalian.addItemListener( new LocaleListener( Locale.ITALIAN ) );
         
         menuLanguage = new Menu();
@@ -364,13 +370,13 @@ public class KanaSensei extends Frame
 		menuViews = new Menu();
 		menubar.add( menuViews );
 
-		menuItemRomaKata = new CheckboxMenuItem();
+		menuItemRomaKata = new CheckboxMenuItem( "RomaAndKata" );
 		menuItemRomaKata.addItemListener( new TestTypeListener( ROMAJI_KATAKANA ) );
-		menuItemRomaHira = new CheckboxMenuItem();
+		menuItemRomaHira = new CheckboxMenuItem( "RomaAndHira" );
 		menuItemRomaHira.addItemListener( new TestTypeListener( ROMAJI_HIRAGANA ) );
-		menuItemHira = new CheckboxMenuItem();
+		menuItemHira = new CheckboxMenuItem( "HiraAndRoma" );
 		menuItemHira.addItemListener( new TestTypeListener( HIRAGANA_ROMAJI ) );
-		menuItemKata = new CheckboxMenuItem();
+		menuItemKata = new CheckboxMenuItem( "KataAndRoma" );
 		menuItemKata.addItemListener( new TestTypeListener( KATAKANA_ROMAJI ) );
 
 		menuViews.add( menuItemKata );
@@ -1103,6 +1109,7 @@ public class KanaSensei extends Frame
 
     private static final int        MAX_ATTEMPTS        = 2;
 
+    private static final Locale     LOCALE_SPANISH      = new Locale( "es", "" );
     private Vector kanaPool;
 
     public static void main( String[] args ) {
