@@ -1,7 +1,7 @@
 <project name="kanasensei" default="dist" basedir=".">
 
   <property name="src" value="src"/>
-  <property name="props" value="properties"/>
+  <property name="properties" value="properties"/>
   <property name="javadoc" value="doc/javadoc"/>
   <property name="classes" value="classes"/>
   <property name="dist" value="dist"/>
