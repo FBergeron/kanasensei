@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>
+KanaSensei - Bienvenido
+</title>
+<script>
+function start() {
+    if( document.KanaSenseiInvoker == null ) {
+        alert( "Un momento, por favor..." );
+        return false;
+    }
+    document.KanaSenseiInvoker.showKanaSensei();
+}
+</script>
+</head>
+<body bgcolor="#ffffff">
+<table width="60%">
+<tr><td><h1>¡Bienvenido a KanaSensei!</h1></td></tr>
+<tr><td>
+<p>
+El objectivo de esta applet JAVA es de facilitar vuestro aprentizaje de las kanas japonesas.
+<p>
+Clique OK para empezar.
+<p>
+Consulte el menú "Ayuda" para saber la manera de utilizar KanaSensei.
+<p>
+<p align=right><A HREF="javascript:start()"><img src="../res/ok.jpg" name=ok width=81 height=47 alt="Charger KanaSensei" border=0></A>
+<br><br><br>
+</td></tr>
+</table>
+<font size=2>Programa disponible : <a href="ftp://fbergeron.com/kanasensei/src/kanasensei.zip">kanasensei.zip (21Kb)</a>.<br>
+Vuestros comentarios son los bienvenidos.<br>
+<a href="mailto:fbergeron@rocketmail.com">FBergeron@Rocketmail.COM</a>.
+</font>
+<hr>
+<font size=2>
+Este sitio fui testado sobre Netscape 4.0 e Internet Explorer 4.0
+</font>
+<applet name="KanaSenseiInvoker" code="com.fbergeron.kanasensei.Invoker.class" codebase="../res" archive="classes.jar,img.jar,png.jar,properties.jar,snd.jar" width=2 height=2>
+<param name=Locale value="es">
+</applet>
+</body>
+</html>
