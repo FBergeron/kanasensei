@@ -1,5 +1,6 @@
 <project name="kanasensei" default="dist" basedir=".">
 
+  <property name="trash" value="xxx"/>
   <property name="src" value="src"/>
   <property name="lib" value="lib"/>
   <property name="properties" value="properties"/>
