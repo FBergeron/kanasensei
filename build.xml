@@ -8,6 +8,7 @@
   <property name="dist.html" value="${dist}/public_html"/>
   <property name="dist.ftp" value="${dist}/public_ftp"/>
   <property name="build.compiler" value="jikes"/>
+  <property name="build.compiler.emacs" value="true"/>
 
   <path id="project.class.path">
   	<pathelement path="${classpath}"/>
