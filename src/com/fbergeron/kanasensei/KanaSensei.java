@@ -472,13 +472,8 @@ public class KanaSensei extends Frame
 
     class AboutListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            Locale locale = KanaSensei.this.getLocale();
-            DateFormat df = DateFormat.getDateInstance( DateFormat.LONG, locale );
-            Calendar cal = Calendar.getInstance();
-            cal.set( 2002, 3, 2 );
-            FrameAbout frameAbout = new FrameAbout( resBundle.getString( "KanaSensei" ), "1.3",
-                "Frédéric Bergeron", "FBergeron@users.sourceforge.net",
-                    df.format( cal.getTime() ), locale );
+            FrameAbout frameAbout = new FrameAbout();
+            frameAbout.setLocale( KanaSensei.this.getLocale() );
             frameAbout.setVisible( true );
         }
     }
@@ -1113,8 +1108,31 @@ public class KanaSensei extends Frame
     private Vector kanaPool;
 
     public static void main( String[] args ) {
+        if( args.length > 1 ) {
+            System.out.println( "Usage: java -cp classes:properties:img:snd:lib/png.jar com.fbergeron.kanasensei.KanaSensei [locale]" );
+            System.out.println( "locale: (default: en)" );
+            System.out.println( "en - English" );
+            System.out.println( "fr - French" );
+            System.out.println( "es - Spanish" );
+            System.out.println( "it - Italian" );
+            System.out.println( "de - German" );
+            System.exit( -1 );
+        }
         KanaSensei sensei = new KanaSensei( null );
-        sensei.setLocale( Locale.ENGLISH );
+        if( args.length == 0 ) 
+            sensei.setLocale( Locale.ENGLISH );
+        else if( args.length == 1 ) {
+            if( "fr".equals( args[ 0 ] ) )
+                sensei.setLocale( Locale.FRENCH );
+            else if( "es".equals( args[ 0 ] ) )
+                sensei.setLocale( KanaSensei.LOCALE_SPANISH );
+            else if( "it".equals( args[ 0 ] ) )
+                sensei.setLocale( Locale.ITALIAN );
+            else if( "de".equals( args[ 0 ] ) )
+                sensei.setLocale( Locale.GERMAN );
+            else 
+                sensei.setLocale( Locale.ENGLISH );
+        }
         sensei.setVisible( true );
     }
 }
