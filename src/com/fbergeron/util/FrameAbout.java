@@ -27,11 +27,11 @@ import java.util.*;
  */
 public class FrameAbout extends Frame
 {
-	/**
-	 * Constructor for FrameAbout.
-	 */
-	public FrameAbout()
-	{
+    /**
+     * Constructor for FrameAbout.
+     */
+    public FrameAbout()
+    {
         setLayout( new BorderLayout() );
         setBackground( Color.white );
         
@@ -54,25 +54,9 @@ public class FrameAbout extends Frame
         add( _panelPicture, BorderLayout.CENTER );
         add( _panelAuthor, BorderLayout.SOUTH );
 
-		addWindowListener( new WindowManager( this, WindowManager.HIDE_ON_CLOSE ) );
+        addWindowListener( new WindowManager( this, WindowManager.HIDE_ON_CLOSE ) );
         pack();
-	}
-
-    /**
-     * Shows or hides the component depending on the boolean flag b.
-     * @param b  if true, show the component; otherwise, hide the component.
-     * @see java.awt.Component#isVisible
-     */
-    public void setVisible(boolean b)
-	{
-	    Dimension scrSize = getToolkit().getScreenSize();
-	    Dimension size = getSize();
-		if(b)
-		{
-			setLocation( (scrSize.width - size.width) / 2, (scrSize.height - size.height) / 2 );
-		}
-		super.setVisible(b);
-	}
+    }
 
     public Insets getInsets() {
         Insets insets = super.getInsets();
@@ -89,30 +73,28 @@ public class FrameAbout extends Frame
      */
     public void setLocale( Locale locale ) {
         super.setLocale( locale );
-        _resBundle = ResourceBundle.getBundle( getClass().getName() + "Ress", locale ); 
+        ResourceBundle resBundle = ResourceBundle.getBundle( getClass().getName() + "Ress", locale ); 
         
         DateFormat df = DateFormat.getDateInstance( DateFormat.LONG, locale );
         Calendar cal = Calendar.getInstance();
         cal.set( 2002, 4, 10 );
 
-        _labelVersion.setText( (String)_resBundle.getString( "Version" ) + " " + 
-            (String)_resBundle.getString( "VersionNumber" ) );
-        _labelAuthor.setText( (String)_resBundle.getString( "By" ) +" : " + (String)_resBundle.getString( "Author" ) );
+        _labelVersion.setText( (String)resBundle.getString( "Version" ) + " " + 
+            (String)resBundle.getString( "VersionNumber" ) );
+        _labelAuthor.setText( (String)resBundle.getString( "By" ) +" : " + (String)resBundle.getString( "Author" ) );
         _labelDate.setText( "© " + df.format( cal.getTime() ) );
-        _labelEmail.setText( _resBundle.getString( "Email" ) );
-        _labelWebSite.setText( _resBundle.getString( "WebSite" ) );
+        _labelEmail.setText( resBundle.getString( "Email" ) );
+        _labelWebSite.setText( resBundle.getString( "WebSite" ) );
 
-		setTitle( _resBundle.getString( "About" ) + " " + _resBundle.getString( "KanaSensei" ) );
+        setTitle( resBundle.getString( "About" ) + " " + resBundle.getString( "KanaSensei" ) );
     }
 
-	private Label       _labelVersion;
-	private ImagePanel  _panelPicture;
-	private Panel       _panelAuthor;
-	private Label       _labelDate;
-	private Label       _labelAuthor;
-	private Label       _labelEmail;
+    private Label       _labelVersion;
+    private ImagePanel  _panelPicture;
+    private Panel       _panelAuthor;
+    private Label       _labelDate;
+    private Label       _labelAuthor;
+    private Label       _labelEmail;
     private Label       _labelWebSite;
-	
-	private ResourceBundle _resBundle;
-
+    
 }
