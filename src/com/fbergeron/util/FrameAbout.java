@@ -74,6 +74,15 @@ public class FrameAbout extends Frame
 		super.setVisible(b);
 	}
 
+    public Insets getInsets() {
+        Insets insets = super.getInsets();
+        int top = insets.top + 10;
+        int left = insets.left + 10;
+        int bottom = insets.bottom + 10;
+        int right = insets.right + 10;
+        return( new Insets( top, left, bottom, right ) );
+    }
+
     /** 
      * Sets the locale of the Frame.
      * @param locale Locale of the frame.
@@ -84,7 +93,7 @@ public class FrameAbout extends Frame
         
         DateFormat df = DateFormat.getDateInstance( DateFormat.LONG, locale );
         Calendar cal = Calendar.getInstance();
-        cal.set( 2002, 4, 2 );
+        cal.set( 2002, 4, 10 );
 
         _labelVersion.setText( (String)_resBundle.getString( "Version" ) + " " + 
             (String)_resBundle.getString( "VersionNumber" ) );
