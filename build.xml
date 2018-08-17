@@ -9,11 +9,10 @@
   <property name="dist" value="dist"/>
   <property name="dist.html" value="${dist}/public_html"/>
   <property name="dist.ftp" value="${dist}/public_ftp"/>
-  <property name="build.compiler" value="jikes"/>
   <property name="build.compiler.emacs" value="true"/>
 
   <path id="project.class.path">
-  	<pathelement path="${classpath}"/>
+    <pathelement path="${classpath}"/>
       <fileset dir="${lib}">
         <include name="**/*.jar"/>
       </fileset>
@@ -22,7 +21,7 @@
 
   <target name="compile">
     <mkdir dir="${classes}"/>
-    <javac srcdir="${src}" destdir="${classes}" deprecation="true">
+    <javac srcdir="${src}" destdir="${classes}" deprecation="true" includeantruntime="false">
       <classpath refid="project.class.path"/>
     </javac>
   </target>
@@ -35,10 +34,10 @@
 
   <target name="dist" depends="compile">
     <mkdir dir="${dist.ftp}"/>
-  	<jar jarfile="${dist.html}/res/img.jar" basedir="img"/>
-  	<jar jarfile="${dist.html}/res/snd.jar" basedir="snd"/>
-  	<jar jarfile="${dist.html}/res/classes.jar" basedir="classes"/>
-  	<jar jarfile="${dist.html}/res/properties.jar" basedir="properties"/>
+    <jar jarfile="${dist.html}/res/img.jar" basedir="img"/>
+    <jar jarfile="${dist.html}/res/snd.jar" basedir="snd"/>
+    <jar jarfile="${dist.html}/res/classes.jar" basedir="classes"/>
+    <jar jarfile="${dist.html}/res/properties.jar" basedir="properties"/>
     <copy todir="${dist.html}/res">
       <fileset dir="${lib}">
         <include name="**/*.jar"/>
