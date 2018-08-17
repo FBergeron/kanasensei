@@ -45,6 +45,16 @@
     </copy>  
   </target>
 
+  <target name="run" depends="dist">
+    <java classname="com.fbergeron.kanasensei.KanaSensei" fork="true">
+      <classpath>
+        <fileset dir="${dist.html}/res">
+          <include name="**/*.jar"/>
+        </fileset>
+      </classpath>
+    </java>
+  </target>
+
   <target name="clean">
     <delete dir="${classes}"/>
     <delete>
