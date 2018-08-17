@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001  Frédéric Bergeron (fbergeron@users.sourceforge.net)
+ * Copyright (C) 2001  FrÃ©dÃ©ric Bergeron (fbergeron@users.sourceforge.net)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,23 +59,23 @@ public class Util {
             System.err.println( "Unable to read image " + strResourceFilename + "." );
             e.printStackTrace();
         }
-	    return( image );
-	}
+        return( image );
+    }
     
-	/** 
-	 * Load images (used for preloading images).
-	 * @param images Array of <code>Image</code> instances to preload.
-	 * @param comp Component that will observe the loading state of the images.
-	 */
-	public static void loadImages( Image[] images, Component comp ) {
-		MediaTracker tracker = new MediaTracker( comp );
-		for( int i = 0; i < images.length; i++ )
-			tracker.addImage( images[ i ], 0 );
-		try {
-			tracker.waitForID( 0 );
-		}
-		catch( InterruptedException ignore ) {
-		}
+    /** 
+     * Load images (used for preloading images).
+     * @param images Array of <code>Image</code> instances to preload.
+     * @param comp Component that will observe the loading state of the images.
+     */
+    public static void loadImages( Image[] images, Component comp ) {
+        MediaTracker tracker = new MediaTracker( comp );
+        for( int i = 0; i < images.length; i++ )
+            tracker.addImage( images[ i ], 0 );
+        try {
+            tracker.waitForID( 0 );
+        }
+        catch( InterruptedException ignore ) {
+        }
     }
     
     /** 
@@ -95,7 +95,7 @@ public class Util {
                 while( true ) {
                     int bytesRead = in.read( buffer );
                     if( bytesRead == -1 )
-                    	break;
+                        break;
                     out.write( buffer, 0, bytesRead );
                 }
             }

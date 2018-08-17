@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001  Frédéric Bergeron (fbergeron@users.sourceforge.net)
+ * Copyright (C) 2001  FrÃ©dÃ©ric Bergeron (fbergeron@users.sourceforge.net)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,13 +28,13 @@ import com.fbergeron.kanasensei.*;
  */
 public class Invoker extends java.applet.Applet {
 
-	/**
-	 * Constructs and shows the KanaSensei frame in the specified language.
-	 */
-	public void init() {
-		KanaSensei kanaSensei = new KanaSensei( this );
+    /**
+     * Constructs and shows the KanaSensei frame in the specified language.
+     */
+    public void init() {
+        KanaSensei kanaSensei = new KanaSensei( this );
         kanaSensei.setLocale( Locale.ENGLISH );
         kanaSensei.setVisible( true );
-	}
+    }
         
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1999  Frédéric Bergeron (fbergeron@users.sourceforge.net)
+ * Copyright (C) 1999  FrÃ©dÃ©ric Bergeron (fbergeron@users.sourceforge.net)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -82,7 +82,7 @@ public class FrameAbout extends Frame
         _labelVersion.setText( (String)resBundle.getString( "Version" ) + " " + 
             (String)resBundle.getString( "VersionNumber" ) );
         _labelAuthor.setText( (String)resBundle.getString( "By" ) +" : " + (String)resBundle.getString( "Author" ) );
-        _labelDate.setText( "© " + df.format( cal.getTime() ) );
+        _labelDate.setText( "Â© " + df.format( cal.getTime() ) );
         _labelEmail.setText( resBundle.getString( "Email" ) );
         _labelWebSite.setText( resBundle.getString( "WebSite" ) );
 
